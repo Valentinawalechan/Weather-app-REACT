@@ -13,6 +13,7 @@ export default function Weather (props) {
     function handleResponse(response){
         setWeatherData({
             ready:true,
+            coordinates: response.data.coord,
             temperature: response.data.main.temp,
             humidity: response.data.main.humidity,
             wind: response.data.wind.speed,
@@ -21,8 +22,6 @@ export default function Weather (props) {
             date: new Date(response.data.dt * 1000),
             icon: response.data.weather[0].icon
         });
-       
-
     }
     function search() {
        const apiKey="e0694654dc1e3a75a3a366bd93b182e4";
@@ -54,7 +53,7 @@ export default function Weather (props) {
             </div>
         </form>
         <WeatherInfo data={weatherData} />
-        <WeatherForecast />
+        <WeatherForecast coordinates={weatherData.coordinates} />
     </div>
     ); 
 } else {
