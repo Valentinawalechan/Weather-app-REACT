@@ -3,37 +3,33 @@ import FormattedDate from"./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature"
 
+
+
 export default function WeatherInfo (props) {
     return (
         <div className = "WeatherInfo">
+        <p> <FormattedDate date={props.data.date} /></p>
         <h1>{props.data.city}</h1>
         <ul>
-            <li> <FormattedDate date={props.data.date} /> </li>
+            <li> 
+                <div className="clearfix">
+                    <div className="temp"><WeatherTemperature celsius={props.data.temperature} /> </div>
+            <div className="emoji">
+            <WeatherIcon code={props.data.icon} size={62} /> 
+            </div>
+            </div> 
+            </li>
             <li className="text-capitalize"> {props.data.description}</li>
-        </ul>
-    <div className="row mt-3">
-        <div className="col-6">
-         <div className="d-flex">
-             <div className="float-left">
-             <WeatherIcon code={props.data.icon} size={64} />
-             </div>
-            <div className="float-left">
-            <WeatherTemperature celsius={props.data.temperature} />
-            </div>
-            </div>
-        </div>
-        <div className="col-6">
-            <ul>
-               
-                <li className="conditions">
+            <li className="conditions">
                     Humidity: {props.data.humidity}%
                 </li>
                 <li className="conditions">
                     Wind: {Math.round(props.data.wind)}km/h
                 </li>
-            </ul>
-        </div>
-    </div>
+        </ul>
+        <hr />
+        <h2>5 Days Weather Forecast</h2>
+    
     </div>
     )
 }
