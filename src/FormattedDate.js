@@ -12,6 +12,7 @@ export default function FormattedDate(props) {
         "Jul",
         "Aug",
         "Sep",
+        "Oct",
         "Nov",
         "Dec"
     ];
